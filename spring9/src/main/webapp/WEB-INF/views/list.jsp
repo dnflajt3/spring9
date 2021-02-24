@@ -3,7 +3,6 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<%String contextPath=request.getContextPath(); %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,13 +23,13 @@
 				<td>${dto.mId}</td>
 				<td>${dto.mWriter}</td>
 				<td>${dto.mContent}</td>
-				<td><a href="<%=contextPath %>/delete?mId=${dto.mId}">X</a></td>
-
+				<td><a href="${pageContext.request.contextPath}/delete?mId=${dto.mId}">X</a></td>
+				
 			</tr>
 		</c:forEach>
 	</table>
 	<p>
-		<a href="<%=contextPath %>/writeForm">글작성</a>
+		<a href="${pageContext.request.contextPath}/writeForm">글작성</a>
 	</p>
 
 </body>

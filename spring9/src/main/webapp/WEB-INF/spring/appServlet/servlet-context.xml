@@ -26,7 +26,7 @@
 	</beans:bean>
 
 	<context:component-scan
-		base-package="com.rup.spring8" />
+		base-package="com.rup.spring9" />
 
 	<beans:bean name="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -58,15 +58,14 @@
 	</beans:bean>
 	
 	
-	<beans:bean name="dao" class="com.rup.spring8.dao.ContentDao">
-	<beans:property name="template" ref="jdbcTemplate"></beans:property>
-	</beans:bean>
 	
 	
 	<beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<beans:property name="dataSource" ref="dataSource"></beans:property>
- 		<beans:property name="mapperLocations"  value="classpath:com/rup/spring8/dao/mapper/*.xml"></beans:property>
+ 		<beans:property name="mapperLocations"  value="classpath:com/rup/spring9/dao/mapper/*.xml"></beans:property>
 	</beans:bean>
+	
+	
 	
 	<beans:bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
 		<beans:constructor-arg index="0" ref="sqlSessionFactory"></beans:constructor-arg>

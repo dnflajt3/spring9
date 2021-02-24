@@ -1,4 +1,4 @@
-package com.rup.spring8;
+package com.rup.spring9;
 
 import java.awt.Dimension;
 import java.text.DateFormat;
@@ -27,8 +27,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.rup.spring8.dao.ContentDao;
-import com.rup.spring8.dao.IDao;
+import com.rup.spring9.dao.IPostDao;
+
 
 /**
  * Handles requests for the application home page.
@@ -36,14 +36,7 @@ import com.rup.spring8.dao.IDao;
 @Controller
 public class HomeController {
 	
-	/*
-	private ContentDao dao;
-	
-	@Autowired
-	public void setDao(ContentDao dao) {
-		this.dao = dao;
-	}
-	*/
+
 	@Autowired
 	private SqlSession sqlSession;
 	
@@ -67,34 +60,7 @@ public class HomeController {
 	}
 	
 	
-	@RequestMapping("/list")
-	public String list( Model model) {
-		IDao dao=  sqlSession.getMapper(IDao.class);
-		model.addAttribute("dtos",dao.listDao());
-		return "list";
-	}
+
 	
-	@RequestMapping("/write")
-	public String write(HttpServletRequest request) {
-		
-		IDao dao=  sqlSession.getMapper(IDao.class);
-		dao.writeDao(request.getParameter("mWriter"),request.getParameter("mContent"));
-		return "redirect:list";
-	}
-	
-	@RequestMapping("/writeForm")
-	public String writeForm() {
-		return "writeForm";
-	}
-	
-	@RequestMapping("/delete")
-	public String delete(HttpServletRequest request) {
-		
-		
-		IDao dao=  sqlSession.getMapper(IDao.class);
-		dao.deleteDao(request.getParameter("mId"));
-		return "redirect:list";
-		
-	}
-	
+
 }

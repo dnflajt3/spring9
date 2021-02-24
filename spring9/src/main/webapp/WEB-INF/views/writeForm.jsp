@@ -3,9 +3,7 @@
 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
-<%
-	String contextPath = request.getContextPath();
-%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,7 +11,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<form action="<%=contextPath%>/write">
+	<form action="${pageContext.request.contextPath}/write">
 		<table border="1">
 			<tr>
 				<td>작성자</td>
@@ -25,7 +23,7 @@
 			</tr>
 			<tr>
 				<td><input type="submit" value="입력"></td>
-				<td><a href="<%=contextPath%>/list">목록보기</a> </td>
+				<td><a href="${pageContext.request.contextPath}/list">목록보기</a> </td>
 			</tr>
 		</table>
 
