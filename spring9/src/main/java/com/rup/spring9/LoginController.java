@@ -27,7 +27,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.rup.spring9.dao.ICommentDao;
 import com.rup.spring9.dao.IPostDao;
 
 
@@ -35,43 +34,39 @@ import com.rup.spring9.dao.IPostDao;
  * Handles requests for the application home page.
  */
 @Controller
-public class CommentController {
+public class LoginController {
 	
 
 	@Autowired
 	private SqlSession sqlSession;
 	
-	private static final Logger logger = LoggerFactory.getLogger(CommentController.class);
+	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	
+	/**
+	 * Simply selects the home view to render by returning its name.
+	 */
+	@RequestMapping(value = "/", method = RequestMethod.GET)
+	public String home(Locale locale, Model model) {
+		logger.info("Welcome home! The client locale is {}.", locale);
+		
+		Date date = new Date();
+		DateFormat dateFormat = DateFormat.getDateTimeInstance(DateFormat.LONG, DateFormat.LONG, locale);
+		
+		String formattedDate = dateFormat.format(date);
+		
+		model.addAttribute("serverTime", formattedDate );
 
-	@RequestMapping("/list")
-	public String list( Model model) {
-		ICommentDao dao=  sqlSession.getMapper(ICommentDao.class);
-		return "list";
+		return "index";
 	}
 	
-	@RequestMapping("/write")
-	public String write(HttpServletRequest request) {
+	@RequestMapping("/loginForm")
+	public String loginForm(HttpServletRequest request) {
 		
-		IPostDao dao=  sqlSession.getMapper(IPostDao.class);
-		dao.create(request.getParameter("mWriter"),request.getParameter("mContent"));
-		return "redirect:list";
+		return "guest/loginForm";
 	}
+
 	
-	@RequestMapping("/writeForm")
-	public String writeForm() {
-		return "writeForm";
-	}
 	
-	@RequestMapping("/delete")
-	public String delete(HttpServletRequest request) {
-		
-		
-		IPostDao dao=  sqlSession.getMapper(IPostDao.class);
-		dao.delete(request.getParameter("mId"));
-		return "redirect:list";
-		
-	}	
 	
 
 	

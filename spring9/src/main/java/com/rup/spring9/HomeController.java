@@ -56,8 +56,31 @@ public class HomeController {
 		
 		model.addAttribute("serverTime", formattedDate );
 
-		return "home";
+		return "index";
 	}
+	
+	@RequestMapping("/admin")
+	public String admin(HttpServletRequest request) {
+		
+		return "admin/page";
+	}
+	@RequestMapping("/user")
+	public String user(HttpServletRequest request) {
+		
+		return "user/page";
+	}
+	@RequestMapping("/member")
+	public String member(HttpServletRequest request) {
+		
+		return "member/page";
+	}
+	
+	@RequestMapping("/loginForm")
+	public String loginForm(HttpServletRequest request) {
+		
+		return "login/loginForm";
+	}
+	
 	
 	
 

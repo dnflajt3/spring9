@@ -8,11 +8,9 @@
 </head>
 <body>
 <h1>
-	Hello world!  
+	${pageContext.request.pathInfo}
 </h1>
 
-<P>  The time on the server is ${serverTime}. </P>
-<a href="${pageContext.request.contextPath}/list">list</a>
 </body>
 </html>
  

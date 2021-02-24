@@ -15,7 +15,7 @@
 		delete from comment where id = #{param1}
 	</delete>
 	
-	<select id="findAll" resultType="com.rup.spring9.dto.ContentDto">
+	<select id="findAll" resultType="com.rup.spring9.dto.CommentDto">
 		select * from comment where parentPostId = #{param1};
 	</select>
 
