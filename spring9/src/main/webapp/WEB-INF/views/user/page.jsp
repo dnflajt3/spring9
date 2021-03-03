@@ -8,7 +8,7 @@
 </head>
 <body>
 <h1>
-	${pageContext.request.pathInfo}
+	한글
 </h1>
 
 </body>
